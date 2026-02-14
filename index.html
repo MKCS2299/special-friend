@@ -1,58 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>The One With Us</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="intro section">
-        <h1>The One Where We Found Home</h1>
-        <p class="sub">Not in a place.<br>In a show.<br>In a couch.<br>In each other.</p>
-        <button id="startBtn">Press Play</button>
-    </div>
+<div class="section intro">
+    <h1>The One Where We Found Home</h1>
+    <p>Not in a place.<br>In a show.<br>In a couch.<br>In each other.</p>
+    <button onclick="startExperience()">Press Play</button>
+</div>
 
-    <div class="section hidden" id="memory1">
-        <p>
-            You’d say, “Just one episode.” <br><br>
-            I’d say, “Okay, last one.” <br><br>
-            And five minutes later… I’d be asleep.
-        </p>
-        <div class="zzz">Zzz...</div>
-    </div>
+<div class="section hidden" id="section1">
+    <p>
+        You’d say, “Just one episode.”<br><br>
+        I’d say, “Okay, last one.”<br><br>
+        And five minutes later… I’d be asleep.
+    </p>
+</div>
 
-    <div class="section hidden" id="memory2">
-        <p>
-            But I never slept through the part that mattered. <br><br>
-            You.
-        </p>
-    </div>
+<div class="section hidden" id="section2">
+    <p>
+        But I never slept through the part that mattered.<br><br>
+        You.
+    </p>
+</div>
 
-    <div class="section hidden" id="memory3">
-        <p>
-            I don’t miss the show. <br><br>
-            I miss your voice reacting to scenes. <br>
-            Your random commentary. <br>
-            The way comfort felt effortless.
-        </p>
-    </div>
+<div class="section hidden" id="section3">
+    <p>
+        I don’t miss the show.<br><br>
+        I miss your voice reacting to scenes.<br>
+        The way comfort felt effortless.
+    </p>
+</div>
 
-    <div class="section hidden" id="ending">
-        <p>
-            I’m not asking for anything. <br><br>
-            I just wanted you to know those nights were never ordinary to me. <br><br>
-            They were my safe place. <br><br>
-            Even if I slept early… <br>
-            I was always exactly where I wanted to be.
-        </p>
-    </div>
+<div class="section hidden" id="section4">
+    <p>
+        I’m not asking for anything.<br><br>
+        Those nights were my safe place.<br><br>
+        Even if I slept early…<br>
+        I was exactly where I wanted to be.
+    </p>
+</div>
 
-    <audio id="bgMusic" loop>
-        <source src="friends-recording.mp3" type="audio/mpeg">
-    </audio>
+<audio id="bgMusic" loop>
+    <source src="friends-recording.mp3" type="audio/mpeg">
+</audio>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
