@@ -4,29 +4,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const intro = document.getElementById("intro");
     const audio = document.getElementById("bgMusic");
 
-    const sections = ["s1", "s2", "s3", "s4"];
-
     startBtn.addEventListener("click", function () {
 
-        // Play audio safely
-        if (audio) {
-            audio.play().catch(() => {});
-        }
+        if (audio) audio.play().catch(() => {});
 
-        // Hide intro
-        intro.classList.add("hidden");
+        intro.style.display = "none";
 
-        let delay = 500;
-
-        sections.forEach((id) => {
-            setTimeout(() => {
-                const section = document.getElementById(id);
-                section.classList.remove("hidden");
-                section.classList.add("visible");
-            }, delay);
-            delay += 5000;
-        });
-
+        document.getElementById("s1").style.display = "flex";
+        setTimeout(() => {
+            document.getElementById("s2").style.display = "flex";
+        }, 4000);
+        setTimeout(() => {
+            document.getElementById("s3").style.display = "flex";
+        }, 8000);
+        setTimeout(() => {
+            document.getElementById("s4").style.display = "flex";
+        }, 12000);
     });
-
 });
