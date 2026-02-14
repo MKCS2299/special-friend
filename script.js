@@ -1,46 +1,55 @@
-document.addEventListener("DOMContentLoaded", function () {
+window.onload = function () {
 
-    const introOverlay = document.getElementById("netflixIntro");
     const startBtn = document.getElementById("startBtn");
+    const intro = document.getElementById("intro");
     const bgMusic = document.getElementById("bgMusic");
     const clap = document.getElementById("clapSound");
 
     const sections = ["s1", "s2", "s3", "s4"];
     let current = 0;
 
-    // Remove intro overlay after animation
-    setTimeout(() => {
-        introOverlay.style.display = "none";
+    // Remove Netflix intro after 3 seconds
+    setTimeout(function () {
+        const introOverlay = document.getElementById("netflixIntro");
+        if (introOverlay) introOverlay.style.display = "none";
     }, 3000);
 
-    startBtn.addEventListener("click", function () {
-        document.getElementById("intro").style.display = "none";
+    // PLAY BUTTON
+    startBtn.onclick = function () {
+
+        intro.style.display = "none";
 
         if (bgMusic) {
-            bgMusic.play().catch(() => {});
+            bgMusic.play().catch(function(){});
         }
 
-        showSection(current);
-    });
+        showSection(0);
+    };
 
-    document.querySelectorAll(".nextBtn").forEach(btn => {
-        btn.addEventListener("click", function () {
+    // NEXT EPISODE BUTTONS
+    const nextButtons = document.getElementsByClassName("nextBtn");
+
+    for (let i = 0; i < nextButtons.length; i++) {
+        nextButtons[i].onclick = function () {
             if (clap) clap.play();
             current++;
             if (current < sections.length) {
                 showSection(current);
             }
-        });
-    });
-
-    function showSection(index) {
-        document.querySelectorAll("#s1, #s2, #s3, #s4").forEach(sec => {
-            sec.style.display = "none";
-        });
-
-        const section = document.getElementById(sections[index]);
-        section.style.display = "flex";
-        section.scrollIntoView({ behavior: "smooth" });
+        };
     }
 
-});
+    function showSection(index) {
+        for (let i = 0; i < sections.length; i++) {
+            const sec = document.getElementById(sections[i]);
+            if (sec) sec.style.display = "none";
+        }
+
+        const active = document.getElementById(sections[index]);
+        if (active) {
+            active.style.display = "flex";
+            active.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+
+};
