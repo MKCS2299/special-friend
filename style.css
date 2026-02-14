@@ -1,15 +1,14 @@
 body {
     margin: 0;
-    padding: 0;
-    background: linear-gradient(180deg, #140a24, #2b1745);
+    background: linear-gradient(180deg, #1a0c2b, #2f1950);
     font-family: Georgia, serif;
     color: #f5e9ff;
+    overflow: hidden;
 }
 
-/* IMPORTANT: sections must be visible by default */
+/* Sections */
 .section {
-    min-height: 100vh;
-    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,23 +21,70 @@ body {
     display: none;
 }
 
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-p {
-    max-width: 700px;
-    font-size: 1.3rem;
-    line-height: 1.8;
-}
-
+/* Button */
 button {
-    margin-top: 30px;
-    padding: 12px 30px;
-    font-size: 1rem;
-    background: gold;
+    margin-top: 25px;
+    padding: 12px 28px;
+    background: #ffcc00;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+}
+
+/* Couch */
+.couch {
+    width: 200px;
+    height: 80px;
+    background: #b22222;
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.couch:before, .couch:after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    background: #8b1a1a;
+    top: -20px;
+    border-radius: 10px;
+}
+
+.couch:before { left: 10px; }
+.couch:after { right: 10px; }
+
+/* Zzz */
+.zzz {
+    font-size: 24px;
+    animation: floatUp 3s infinite ease-in-out;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0.5; }
+    100% { transform: translateY(-40px); opacity: 0; }
+}
+
+/* Episode Title */
+.episode {
+    font-style: italic;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+/* Fairy lights */
+.lights {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: twinkle 6s infinite linear;
+}
+
+@keyframes twinkle {
+    from { background-position: 0 0; }
+    to { background-position: 100px 100px; }
 }
