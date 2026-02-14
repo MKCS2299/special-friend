@@ -6,6 +6,29 @@ body {
     overflow-x: hidden;
 }
 
+/* 🌌 Stars Background */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(white 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.08;
+    z-index: -1;
+}
+
+/* Hidden Name */
+.stars::after {
+    content: "cutest";
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    font-size: 14px;
+    opacity: 0.25;
+    letter-spacing: 3px;
+}
+
 /* Netflix Intro */
 .netflix-intro {
     position: fixed;
@@ -46,10 +69,6 @@ body {
     display: flex;
 }
 
-.hidden {
-    display: none;
-}
-
 button {
     margin-top: 20px;
     padding: 10px 25px;
@@ -66,4 +85,34 @@ button {
     background: #b22222;
     border-radius: 20px;
     margin-bottom: 20px;
+}
+
+/* Coffee Cup */
+.coffee {
+    width: 50px;
+    height: 40px;
+    background: white;
+    border-radius: 6px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.steam {
+    width: 6px;
+    height: 20px;
+    background: rgba(255,255,255,0.5);
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    border-radius: 50%;
+    animation: steamUp 3s infinite;
+}
+
+.steam:nth-child(2) { left: 20px; animation-delay: 1s; }
+.steam:nth-child(3) { left: 30px; animation-delay: 2s; }
+
+@keyframes steamUp {
+    0% { opacity: 0; transform: translateY(0); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-20px); }
 }
