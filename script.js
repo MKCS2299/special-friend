@@ -1,24 +1,21 @@
-const startBtn = document.getElementById("startBtn");
-const sections = document.querySelectorAll(".section");
-const bgMusic = document.getElementById("bgMusic");
+function startExperience() {
 
-startBtn.addEventListener("click", () => {
+    const audio = document.getElementById("bgMusic");
+    audio.play().catch(() => {});
 
-    // Play her recording
-    bgMusic.play();
+    const intro = document.getElementById("intro");
+    intro.classList.add("hidden");
 
-    // Hide intro button
-    document.querySelector(".intro").classList.add("hidden");
+    const sections = ["s1", "s2", "s3", "s4"];
 
-    let delay = 0;
+    let delay = 500;
 
-    sections.forEach((section, index) => {
-        if (!section.classList.contains("intro")) {
-            setTimeout(() => {
-                section.classList.remove("hidden");
-                section.classList.add("visible");
-            }, delay);
-            delay += 4000;
-        }
+    sections.forEach((id) => {
+        setTimeout(() => {
+            const section = document.getElementById(id);
+            section.classList.remove("hidden");
+            section.classList.add("visible");
+        }, delay);
+        delay += 5000;
     });
-});
+}
