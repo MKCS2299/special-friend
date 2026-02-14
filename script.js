@@ -6,19 +6,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startBtn.addEventListener("click", function () {
 
-        if (audio) audio.play().catch(() => {});
+        audio.play().catch(() => {});
 
         intro.style.display = "none";
 
-        document.getElementById("s1").style.display = "flex";
-        setTimeout(() => {
-            document.getElementById("s2").style.display = "flex";
-        }, 4000);
-        setTimeout(() => {
-            document.getElementById("s3").style.display = "flex";
-        }, 8000);
-        setTimeout(() => {
-            document.getElementById("s4").style.display = "flex";
-        }, 12000);
+        showSection("s1", 500);
+        showSection("s2", 5000);
+        showSection("s3", 9000);
+        showSection("s4", 13000);
     });
+
 });
+
+function showSection(id, delay) {
+    setTimeout(() => {
+        document.getElementById(id).style.display = "flex";
+    }, delay);
+}
+
+function secretMessage() {
+    alert("You always looked cutest when you laughed at the same jokes twice.");
+}
