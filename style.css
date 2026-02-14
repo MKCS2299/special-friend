@@ -1,15 +1,40 @@
 body {
     margin: 0;
-    background: linear-gradient(180deg, #1a0c2b, #2f1950);
+    background: linear-gradient(180deg, #0f061c, #2b1745);
     font-family: Georgia, serif;
     color: #f5e9ff;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+/* Netflix Intro */
+.netflix-intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: introFade 3s forwards;
+    z-index: 10;
+}
+
+.netflix-intro h1 {
+    color: red;
+    font-size: 4rem;
+    letter-spacing: 20px;
+}
+
+@keyframes introFade {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
 }
 
 /* Sections */
 .section {
-    height: 100vh;
-    display: flex;
+    min-height: 100vh;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -17,74 +42,85 @@ body {
     padding: 40px;
 }
 
-.hidden {
-    display: none;
+.intro {
+    display: flex;
 }
 
-/* Button */
 button {
-    margin-top: 25px;
-    padding: 12px 28px;
-    background: #ffcc00;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: gold;
     border: none;
-    border-radius: 6px;
     cursor: pointer;
 }
 
 /* Couch */
 .couch {
-    width: 200px;
-    height: 80px;
+    width: 220px;
+    height: 90px;
     background: #b22222;
     border-radius: 20px;
-    position: relative;
     margin-bottom: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.couch:before, .couch:after {
-    content: "";
-    position: absolute;
-    width: 60px;
+/* Coffee */
+.coffee {
+    width: 50px;
     height: 40px;
-    background: #8b1a1a;
-    top: -20px;
-    border-radius: 10px;
+    background: white;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 15px;
 }
 
-.couch:before { left: 10px; }
-.couch:after { right: 10px; }
+.steam {
+    width: 8px;
+    height: 20px;
+    background: rgba(255,255,255,0.5);
+    position: absolute;
+    top: -25px;
+    left: 10px;
+    border-radius: 50%;
+    animation: steamUp 3s infinite;
+}
+
+.steam:nth-child(2) { left: 20px; animation-delay: 1s; }
+.steam:nth-child(3) { left: 30px; animation-delay: 2s; }
+
+@keyframes steamUp {
+    0% { opacity: 0; transform: translateY(0); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
 
 /* Zzz */
 .zzz {
-    font-size: 24px;
-    animation: floatUp 3s infinite ease-in-out;
+    animation: floatUp 3s infinite;
 }
 
 @keyframes floatUp {
     0% { transform: translateY(0); opacity: 0.5; }
-    100% { transform: translateY(-40px); opacity: 0; }
+    100% { transform: translateY(-30px); opacity: 0; }
 }
 
-/* Episode Title */
-.episode {
-    font-style: italic;
-    margin-bottom: 20px;
-    opacity: 0.7;
-}
-
-/* Fairy lights */
-.lights {
+/* Stars with hidden name */
+.stars {
     position: fixed;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
     background-size: 50px 50px;
-    animation: twinkle 6s infinite linear;
+    opacity: 0.1;
 }
 
-@keyframes twinkle {
-    from { background-position: 0 0; }
-    to { background-position: 100px 100px; }
+/* Hidden name */
+.stars::after {
+    content: "cutest";
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    font-size: 14px;
+    opacity: 0.2;
 }
