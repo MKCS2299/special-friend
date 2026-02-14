@@ -4,18 +4,104 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The One With Cutest</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(180deg, #0f061c, #2b1745);
+    font-family: Georgia, serif;
+    color: #f5e9ff;
+    overflow-x: hidden;
+}
+
+/* Stars */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.08;
+    z-index: -1;
+}
+
+.stars::after {
+    content: "cutest";
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    font-size: 14px;
+    opacity: 0.25;
+    letter-spacing: 3px;
+}
+
+/* Netflix intro */
+.netflix-intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: introFade 3s forwards;
+}
+
+.netflix-intro h1 {
+    color: red;
+    font-size: 4rem;
+    letter-spacing: 8px;
+}
+
+@keyframes introFade {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* Sections */
+.section {
+    min-height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.intro {
+    display: flex;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: gold;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.couch {
+    width: 200px;
+    height: 80px;
+    background: #b22222;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+</style>
+
 </head>
 <body>
 
 <div class="stars"></div>
 
-<!-- Netflix Intro -->
 <div class="netflix-intro" id="netflixIntro">
     <h1>cutest</h1>
 </div>
 
-<!-- Intro Section -->
 <div class="section intro" id="intro">
     <h1>The One Where We Found Home</h1>
     <p>
@@ -27,11 +113,72 @@
     <button id="startBtn">Press Play</button>
 </div>
 
-<!-- Episode 1 -->
 <div class="section" id="s1">
     <div class="couch"></div>
+    <p>
+        You’d say, “Just one episode.”<br><br>
+        I’d say, “Okay, last one.”<br><br>
+        And five minutes later… I’d be asleep.
+    </p>
+    <button onclick="nextEpisode()">Next Episode ▶</button>
+</div>
 
-    <div class="coffee">
-        <div class="steam"></div>
-        <div class="steam"></div>
-        <div class="stea
+<div class="section" id="s2">
+    <p>
+        But I never slept through the part that mattered.<br><br>
+        You.
+    </p>
+    <button onclick="nextEpisode()">Next Episode ▶</button>
+</div>
+
+<div class="section" id="s3">
+    <p>
+        I don’t miss the show.<br><br>
+        I miss your voice reacting to scenes.
+    </p>
+    <button onclick="nextEpisode()">Next Episode ▶</button>
+</div>
+
+<div class="section" id="s4">
+    <p>
+        Those nights were my safe place.<br><br>
+        Even if I slept early…<br>
+        I was exactly where I wanted to be.
+    </p>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="friends-recording.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let current = 0;
+const sections = ["s1", "s2", "s3", "s4"];
+
+setTimeout(function() {
+    document.getElementById("netflixIntro").style.display = "none";
+}, 3000);
+
+document.getElementById("startBtn").onclick = function() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("bgMusic").play().catch(()=>{});
+    showSection(0);
+};
+
+function nextEpisode() {
+    current++;
+    if (current < sections.length) {
+        showSection(current);
+    }
+}
+
+function showSection(index) {
+    sections.forEach(id => {
+        document.getElementById(id).style.display = "none";
+    });
+    document.getElementById(sections[index]).style.display = "flex";
+}
+</script>
+
+</body>
+</html>
