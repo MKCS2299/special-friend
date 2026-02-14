@@ -3,11 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const introOverlay = document.getElementById("netflixIntro");
     const startBtn = document.getElementById("startBtn");
     const bgMusic = document.getElementById("bgMusic");
+    const clap = document.getElementById("clapSound");
 
     const sections = ["s1", "s2", "s3", "s4"];
     let current = 0;
 
-    // Remove intro overlay fully after animation
+    // Remove intro overlay after animation
     setTimeout(() => {
         introOverlay.style.display = "none";
     }, 3000);
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll(".nextBtn").forEach(btn => {
         btn.addEventListener("click", function () {
+            if (clap) clap.play();
             current++;
             if (current < sections.length) {
                 showSection(current);
@@ -32,11 +34,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function showSection(index) {
-        document.querySelectorAll(".section").forEach(sec => {
+        document.querySelectorAll("#s1, #s2, #s3, #s4").forEach(sec => {
             sec.style.display = "none";
         });
-        document.getElementById(sections[index]).style.display = "flex";
-        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        const section = document.getElementById(sections[index]);
+        section.style.display = "flex";
+        section.scrollIntoView({ behavior: "smooth" });
     }
 
 });
