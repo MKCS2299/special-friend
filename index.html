@@ -8,7 +8,11 @@
 </head>
 <body>
 
-<div class="lights"></div>
+<div class="stars"></div>
+
+<div class="netflix-intro" id="netflixIntro">
+    <h1>U S</h1>
+</div>
 
 <div class="section intro" id="intro">
     <h1>The One Where We Found Home</h1>
@@ -17,13 +21,19 @@
 </div>
 
 <div class="section hidden" id="s1">
-    <div class="couch" onclick="secretMessage()"></div>
+    <div class="couch"></div>
+    <div class="coffee">
+        <div class="steam"></div>
+        <div class="steam"></div>
+        <div class="steam"></div>
+    </div>
     <p>
         You’d say, “Just one episode.”<br><br>
         I’d say, “Okay, last one.”<br><br>
-        And five minutes later…
+        And five minutes later… I’d be asleep.
     </p>
     <div class="zzz">Zzz...</div>
+    <button class="nextBtn">Next Episode ▶</button>
 </div>
 
 <div class="section hidden" id="s2">
@@ -32,6 +42,7 @@
         But I never slept through the part that mattered.<br><br>
         You.
     </p>
+    <button class="nextBtn">Next Episode ▶</button>
 </div>
 
 <div class="section hidden" id="s3">
@@ -41,6 +52,7 @@
         Your laugh between dialogues.<br>
         The way comfort felt effortless.
     </p>
+    <button class="nextBtn">Next Episode ▶</button>
 </div>
 
 <div class="section hidden" id="s4">
@@ -54,6 +66,10 @@
 
 <audio id="bgMusic" loop>
     <source src="friends-recording.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="clapSound">
+    <source src="clap.mp3" type="audio/mpeg">
 </audio>
 
 <script src="script.js"></script>
